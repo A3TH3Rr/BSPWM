@@ -14,24 +14,48 @@ This repository contains the configuration files I use for my Arch Linux setup w
 
 You can clone this repository and use the bare repository method to keep your dotfiles in their original location without the need for symlinks:
 
-```bash
-git clone --bare git@github.com:yourusername/dotfiles.git $HOME/.dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-dotfiles checkout
-```
+1. **Clone the bare repository**:
+
+   ```bash
+   git clone --bare git@github.com:yourusername/dotfiles.git $HOME/.dotfiles
+   ```
+
+2. **Set up the alias**:
+
+   ```bash
+   alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+   ```
+
+3. **Ensure Git ignores untracked files**:
+
+   ```bash
+   dotfiles config --local status.showUntrackedFiles no
+   ```
+
+4. **Backup conflicting files and checkout dotfiles** (choose **one** of the following):
+
+   - **Option 1**: Backup existing files and checkout:
+     ```bash
+     mkdir -p ~/dotfiles-backup && dotfiles checkout 2>&1 | grep '^\s' | awk '{print $1}' | xargs -I{} mv {} ~/dotfiles-backup/{}
+     ```
+
+   - **Option 2**: Simply checkout dotfiles:
+     ```bash
+     dotfiles checkout
+     ```
 
 ## Screenshots
 
 Here are a few screenshots of my setup:
 
 ### BSPWM Desktop
-![BSPWM Desktop](dotfiles/Screenshots/Desktop.png)
+![BSPWM Desktop](Screenshots/Desktop.png)
 
 ### Polybar
-![Polybar Setup](dotfiles/Screenshots/Polybar.png)
+![Polybar Setup](Screenshots/Polybar.png)
 
 ### Terminal
-![Terminal](dotfiles/Screenshots/Terminal.png)
+![Terminal](Screenshots/Terminal.png)
 
 ## Usage
 
