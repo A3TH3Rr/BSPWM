@@ -17,7 +17,7 @@ You can clone this repository and use the bare repository method to keep your do
 1. **Clone the bare repository**:
 
    ```bash
-   git clone --bare git@github.com:yourusername/dotfiles.git $HOME/.dotfiles
+   git clone --bare https://github.com/Deciper/dotfiles.git $HOME/.dotfiles
    ```
 
 2. **Set up the alias**:
